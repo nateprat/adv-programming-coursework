@@ -6,7 +6,7 @@ import scala.util.{Failure, Success, Try}
 
 class RouteExtractor extends Extractor[Route] {
 
-  val stageExtractor = new StageExtractor
+  private val stageExtractor = new StageExtractor
 
   override def extract(obj: Any): Route = {
     trySafeExtraction(obj.toString) match {
