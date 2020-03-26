@@ -1,9 +1,9 @@
 package com.nateprat.core.transformer
 
-class DefaultTransformer {
+class DefaultTransformer extends Transformer {
 
-  def transform[A,B](list:List[A], f: A => B): List[B] = {
-    list.map(l => f(l))
+  override def transform[A,B](list:List[A], f: A => B): List[B] = {
+    super.transform(list, f)
   }
 
 }
