@@ -19,11 +19,16 @@ object Application extends App {
 
   routeList.foreach(r => routeMap.addOne(r.name_, r.stages_))
 
-  println(routeMap)
+//  println(routeMap)
 
   val algorithmFactory = new AlgorithmFactory
 
-  println(algorithmFactory.averageTotalDistancePlusAverageNoStages(routeList))
-  routeList.foreach(x => println(algorithmFactory.totalDistanceAndNoStagesForRoute(x)))
+//  println(algorithmFactory.averageTotalDistancePlusAverageNoStages(routeList))
+//  routeList.foreach(x => println(algorithmFactory.totalDistanceAndNoStagesForRoute(x)))
+
+  val report = new Report(routeList)
+  println(report.getReport())
+
+  println(CustomRoute.createNewRoute())
 
 }
