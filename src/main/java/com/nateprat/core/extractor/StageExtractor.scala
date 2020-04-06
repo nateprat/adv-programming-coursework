@@ -5,7 +5,7 @@ import com.nateprat.model.Stage
 import scala.util.{Failure, Success, Try}
 
 
-class StageExtractor extends Extractor[Stage]{
+object StageExtractor extends Extractor[Stage]{
 
   private def trySafeExtraction(line:String): Try[Stage] = {
     Try({

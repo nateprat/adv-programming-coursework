@@ -13,10 +13,17 @@ object Application extends App {
 
   val transformer = new DefaultTransformer
 
-  val routeExtractor = new RouteExtractor
+  val routeList = transformer.transform[String, Route](dataList, RouteExtractor.extract)
 
-  val routeList = transformer.transform[String, Route](dataList, routeExtractor.extract)
+  var routeMap = new mutable.HashMap[String, List[Stage]]()
 
-  println(routeList)
+  routeList.foreach(r => routeMap.addOne(r.name_, r.stages_))
+
+  println(routeMap)
+
+  val algorithmFactory = new AlgorithmFactory
+
+  println(algorithmFactory.averageTotalDistancePlusAverageNoStages(routeList))
+  routeList.foreach(x => println(algorithmFactory.totalDistanceAndNoStagesForRoute(x)))
 
 }

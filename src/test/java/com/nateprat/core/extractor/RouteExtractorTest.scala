@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class RouteExtractorTest extends AnyFunSuite {
 
-  val underTest = new RouteExtractor
+  val underTest = RouteExtractor
 
   test("extractTest") {
     val data = "Education Route (GCU),1:University Of Strathclyde:0.65f"

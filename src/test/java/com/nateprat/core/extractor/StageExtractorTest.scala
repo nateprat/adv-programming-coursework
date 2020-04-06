@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class StageExtractorTest extends AnyFunSuite {
 
-  val underTest = new StageExtractor
+  val underTest = StageExtractor
 
   test("extractTest") {
     val stageString = "1:City Chambers:0.75f"

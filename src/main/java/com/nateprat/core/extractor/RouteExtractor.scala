@@ -4,9 +4,7 @@ import com.nateprat.model.{Route, Stage}
 
 import scala.util.{Failure, Success, Try}
 
-class RouteExtractor extends Extractor[Route] {
-
-  private val stageExtractor = new StageExtractor
+object RouteExtractor extends Extractor[Route] {
 
   override def extract(obj: Any): Route = {
     trySafeExtraction(obj.toString) match {
@@ -28,6 +26,6 @@ class RouteExtractor extends Extractor[Route] {
   }
 
   private def extractStages(array:Array[String]): List[Stage] = {
-    array.map(stageExtractor.extract).toList
+    array.map(StageExtractor.extract).toList
   }
 }
