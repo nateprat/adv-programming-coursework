@@ -1,10 +1,10 @@
 package com.nateprat.core.algorithm
 
-import com.nateprat.model.Route
+import com.nateprat.model.{Route, RouteMap}
 
 class AlgorithmFactory {
 
-  def totalDistanceAndNoStagesForRoute(route:Route): String = {
+  def totalDistanceAndNoStagesForRoute(route: Route): String = {
     val noStages = route.stages_.size
     val totalDistance = TotalDistanceForRouteAlgorithm.calculate(route)
     route.name_ + " has " + noStages + " stages and a total distance of " + totalDistance + "km"

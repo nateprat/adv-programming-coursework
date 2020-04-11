@@ -1,9 +1,14 @@
 package com.nateprat.model
 
-class Route(name:String, stages:List[Stage]) {
+class Route(name:String, stages:List[Stage] = List.empty[Stage]) {
 
   val name_ = name
-  val stages_ = stages
+  var stages_ = stages
+
+  def setStages(stages:List[Stage]): Route = {
+    this.stages_ = stages
+    this
+  }
 
   override def toString: String = {
     "Route: " + name + "\nStages: " + stages.toString()
