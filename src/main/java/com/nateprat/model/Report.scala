@@ -5,8 +5,6 @@ import com.nateprat.core.map.RouteMapToRouteList
 
 class Report(routeMap:RouteMap) {
 
-  private val algoFact = new AlgorithmFactory
-
   def getReport(): String = {
     val sb = new StringBuilder
     sb.append("Report of all Routes\nRoutes in descending order\n")
@@ -15,7 +13,7 @@ class Report(routeMap:RouteMap) {
       .sortBy(TotalDistanceForRouteAlgorithm.calculate)
       .reverse
       .foreach(r => sb.append("Total Distance: " + TotalDistanceForRouteAlgorithm.calculate(r) + "km\t" + r.name_ + "\n"))
-    sb.append("\n" + algoFact.averageTotalDistancePlusAverageNoStages(list))
+    sb.append("\n" + AlgorithmFactory.averageTotalDistancePlusAverageNoStages(list))
     sb.toString()
   }
 

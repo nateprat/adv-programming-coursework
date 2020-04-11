@@ -2,7 +2,7 @@ package com.nateprat.core.algorithm
 
 import com.nateprat.model.{Route, RouteMap}
 
-class AlgorithmFactory {
+object AlgorithmFactory {
 
   def totalDistanceAndNoStagesForRoute(route: Route): String = {
     val noStages = route.stages_.size
