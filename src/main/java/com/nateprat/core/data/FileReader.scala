@@ -7,7 +7,7 @@ import scala.io.Source
 class FileReader {
 
   def readFile(filePath:String): List[String] = {
-    Control.using(Source.fromResource(filePath)) {
+    Control.using(Source.fromFile(filePath)) {
       source => {
         source.getLines().toList
       }
