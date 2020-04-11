@@ -1,6 +1,7 @@
 package com.nateprat.core.interactive
 
 import com.nateprat.model.{Route, RouteMap, Stage}
+import com.nateprat.system.prompts.AppStrings
 import com.nateprat.utils.UserInput
 
 import scala.collection.mutable.ListBuffer
@@ -9,14 +10,14 @@ import scala.util.{Failure, Success, Try}
 object CustomRoute {
 
   def createNewRoute(map:RouteMap): Unit = {
-    val routeName = UserInput.userInputWithPrompt("Enter route name...")
+    val routeName = UserInput.userInputWithPrompt(AppStrings.inputRouteName)
     val stages = map.getOrElseUpdate(routeName, List.empty[Stage])
     map.update(routeName, getStages(stages))
   }
 
   private def getSafeStageExtraction(): Try[Float] = {
     Try({
-      val number = UserInput.userInputWithPrompt("Enter stage distance...")
+      val number = UserInput.userInputWithPrompt(AppStrings.inputStageDistance)
       number.toFloat
     })
   }
@@ -30,7 +31,7 @@ object CustomRoute {
     }
     while (!finished) {
       id += 1
-      val stageName = UserInput.userInputWithPrompt("Enter stage name... (or press q to finish)")
+      val stageName = UserInput.userInputWithPrompt(AppStrings.inputStageName)
       if (!stageName.equalsIgnoreCase("q")) {
         getSafeStageExtraction() match {
           case Success(value) => stageBuffer.addOne(new Stage(id, stageName, value))
