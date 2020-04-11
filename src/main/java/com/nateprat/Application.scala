@@ -1,21 +1,28 @@
 package com.nateprat
 
-import com.nateprat.core.data.FileReader
+import java.io.File
+import java.util.StringJoiner
+
+import com.nateprat.core.algorithm.AlgorithmFactory
+import com.nateprat.core.data.{FileReader, RouteMapToCsvTranslator, WriteToFile}
 import com.nateprat.core.extractor.RouteExtractor
+import com.nateprat.core.interactive.CustomRoute
 import com.nateprat.core.transformer.DefaultTransformer
-import com.nateprat.model.Route
+import com.nateprat.model.{Report, Route, RouteMap}
+import com.nateprat.system.user.Menu
+
 
 object Application extends App {
 
+  val mainMenu = new Menu
+
+  mainMenu.mainMenu()
+
   val dataFile = new File("data.txt")
   val csvReader = new FileReader
-
   val dataList = csvReader.readResource(dataFile.getAbsolutePath)
-
   val transformer = new DefaultTransformer
-
   val routeList = transformer.transform[String, Route](dataList, RouteExtractor.extract)
-
   var routeMap = new RouteMap().Object.create(routeList)
 
   val algorithmFactory = new AlgorithmFactory
