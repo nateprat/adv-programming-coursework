@@ -3,6 +3,7 @@ package com.nateprat.system.user
 import java.io.File
 import java.util.StringJoiner
 
+import com.nateprat.core.action.{AverageTotalDistanceAndStagesAction, BlankAction, CreateRouteAction, DisplayRouteAction, QuitAction, ReadFileAction, RouteDescAction, SaveFileAction}
 import com.nateprat.core.data.FileReader
 import com.nateprat.core.extractor.RouteExtractor
 import com.nateprat.core.transformer.DefaultTransformer
@@ -10,17 +11,16 @@ import com.nateprat.model.{Route, RouteMap}
 import com.nateprat.system.prompts.{AppStrings, UserPrompt}
 import com.nateprat.utils.UserInput
 
-import scala.util.{Failure, Success, Try}
 
 object Menu {
 
   var routeMap = new RouteMap
   private val stopping = false
-  private var actions = List(CreateRouteAction, RouteDescAction)
+  private val actions = List(CreateRouteAction, RouteDescAction, AverageTotalDistanceAndStagesAction, DisplayRouteAction, SaveFileAction, QuitAction)
 
  def mainMenu(): Unit = {
    println(AppStrings.welcome)
-   routeMap = readFromFile()
+   routeMap = ReadFileAction.act()
    do {
       userAction()
    } while (!stopping)
@@ -43,18 +43,6 @@ object Menu {
 
   private def createNewRoute(): Unit = {
 
-  }
-
-  private def readFromFile(): RouteMap = {
-    UserPrompt.loading(5)
-    val readFile = UserInput.userInputWithPrompt(AppStrings.readFromFile)
-    if (!readFile.equalsIgnoreCase("y")) return new RouteMap
-    val dataFile = getFilePath()
-    val csvReader = new FileReader
-    val dataList = csvReader.readFile(dataFile.getPath)
-    val transformer = new DefaultTransformer
-    val routeList = transformer.transform[String, Route](dataList, RouteExtractor.extract)
-    new RouteMap().Object.create(routeList)
   }
 
   private def getFilePath(): File = {

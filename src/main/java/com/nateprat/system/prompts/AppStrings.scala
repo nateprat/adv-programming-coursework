@@ -8,4 +8,7 @@ object AppStrings {
   val readFromFile = "Do you want to load data from a file? (y = yes, n = no)"
   val inputDataFile = "Enter the path to the data file..."
   val fileDoesNotExist = "File does not exist."
+  val enterRouteId = "Enter Route id to display details"
+  val saveDataPath = "Enter path for save file..."
+  val thanksForUsingApp = "Thank you for using the Cycling Routes app"
 }

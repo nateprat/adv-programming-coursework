@@ -6,9 +6,9 @@ import java.nio.file.Files
 import com.nateprat.core.pattern.Control
 import com.nateprat.model.Route
 
-class WriteToFile {
+object WriteToFile {
 
-    def writeToFile(path:String, text:String): Unit = {
+    def write(path:String, text:String): Unit = {
       val file = new File(path)
       file.createNewFile()
       Control.using(new BufferedWriter(new FileWriter(file))) {

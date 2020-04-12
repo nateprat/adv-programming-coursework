@@ -1,10 +1,8 @@
-package com.nateprat.system.user
+package com.nateprat.core.action
 
-import com.nateprat.model.RouteMap
-
-trait Action {
+trait Action[A] {
   protected val descString = "%s (" + identifier() + ")"
   def identifier():String
-  def act()
   def desc():String
+  def act(): A
 }

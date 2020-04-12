@@ -1,5 +1,7 @@
 package com.nateprat.model
 
+import com.nateprat.core.map.RouteMapToRouteList
+
 import scala.collection.mutable
 
 class RouteMap extends mutable.HashMap[String, List[Stage]] {
@@ -12,4 +14,5 @@ class RouteMap extends mutable.HashMap[String, List[Stage]] {
     }
   }
 
+  override def toString = RouteMapToRouteList.map(this).toString()
 }

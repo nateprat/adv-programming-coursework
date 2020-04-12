@@ -1,6 +1,6 @@
-package com.nateprat.system.user
+package com.nateprat.core.action
 
-object BlankAction extends Action {
+object BlankAction extends Action[Unit] {
   override def identifier(): String = "WOW"
 
   override def act(): Unit = {}

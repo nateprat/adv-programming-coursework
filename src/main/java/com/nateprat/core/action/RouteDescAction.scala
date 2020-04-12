@@ -1,9 +1,10 @@
-package com.nateprat.system.user
+package com.nateprat.core.action
 
 import com.nateprat.core.algorithm.AlgorithmFactory
 import com.nateprat.core.map.RouteMapToRouteList
+import com.nateprat.system.user.Menu
 
-object RouteDescAction extends Action {
+object RouteDescAction extends Action[Unit] {
   override def identifier(): String = "D"
 
   override def act(): Unit = {

@@ -4,7 +4,7 @@ import com.nateprat.core.pattern.Control
 
 import scala.io.Source
 
-class FileReader {
+object FileReader {
 
   def readFile(filePath:String): List[String] = {
     Control.using(Source.fromFile(filePath)) {
