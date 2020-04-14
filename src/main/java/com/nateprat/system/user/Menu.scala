@@ -20,7 +20,7 @@ object Menu {
 
  def mainMenu(): Unit = {
    println(AppStrings.welcome)
-   routeMap = ReadFileAction.act()
+   routeMap = ReadFileAction.act(routeMap)
    do {
       userAction()
    } while (!stopping)
@@ -38,7 +38,7 @@ object Menu {
       println("action not found")
       UserPrompt.loading()
       BlankAction
-    }).act()
+    }).act(routeMap)
   }
 
   private def createNewRoute(): Unit = {

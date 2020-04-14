@@ -14,7 +14,7 @@ object ReadFileAction extends Action[RouteMap] {
 
   override def desc(): String = String.format(descString, "Read File")
 
-  override def act(): RouteMap = {
+  override def act(map:RouteMap): RouteMap = {
     UserPrompt.loading(5)
     val readFile = UserInput.userInputWithPrompt(AppStrings.readFromFile)
     if (!readFile.equalsIgnoreCase("y")) return new RouteMap

@@ -1,6 +1,7 @@
 package com.nateprat.core.action
 
 import com.nateprat.core.data.{RouteMapToCsvTranslator, WriteToFile}
+import com.nateprat.model.RouteMap
 import com.nateprat.system.prompts.AppStrings
 import com.nateprat.system.user.Menu
 import com.nateprat.utils.UserInput
@@ -10,9 +11,9 @@ object SaveFileAction extends Action[Unit] {
 
   override def desc(): String = String.format(descString, "Save Routes to File")
 
-  override def act(): Unit = {
+  override def act(map:RouteMap): Unit = {
     val path = UserInput.userInputWithPrompt(AppStrings.saveDataPath)
-    val data = RouteMapToCsvTranslator.translate(Menu.routeMap)
+    val data = RouteMapToCsvTranslator.translate(map)
     WriteToFile.write(path, data)
   }
 

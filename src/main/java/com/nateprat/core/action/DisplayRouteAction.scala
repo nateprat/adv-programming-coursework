@@ -1,6 +1,7 @@
 package com.nateprat.core.action
 
 import com.nateprat.core.map.RouteMapToRouteList
+import com.nateprat.model.RouteMap
 import com.nateprat.system.prompts.AppStrings
 import com.nateprat.system.user.Menu
 import com.nateprat.utils.UserInput
@@ -12,8 +13,8 @@ object DisplayRouteAction extends Action[Unit] {
 
   override def desc(): String = String.format(descString, "Display Route Information")
 
-  override def act(): Unit = {
-    val rList = RouteMapToRouteList.map(Menu.routeMap)
+  override def act(map:RouteMap): Unit = {
+    val rList = RouteMapToRouteList.map(map)
     var id = 0
     rList.foreach(r => {
       id += 1
