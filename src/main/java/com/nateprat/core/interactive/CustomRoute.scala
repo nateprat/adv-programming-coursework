@@ -11,7 +11,7 @@ object CustomRoute {
 
   def createNewRoute(map:RouteMap): Unit = {
     val routeName = UserInput.userInputWithPrompt(AppStrings.inputRouteName)
-    val stages = map.getOrElseUpdate(routeName, List.empty[Stage])
+    val stages = map.getOrElseUpdate(routeName, List.empty[(Int, String, Float)])
     map.update(routeName, getStages(stages))
   }
 
@@ -22,19 +22,19 @@ object CustomRoute {
     })
   }
 
-  private def getStages(sList:List[Stage]): List[Stage] = {
+  private def getStages(sList:List[(Int, String, Float)]): List[(Int, String, Float)] = {
     val stageBuffer = sList.to(ListBuffer)
     var finished = false
     var id = 0
     if (stageBuffer.nonEmpty) {
-      id = stageBuffer.last.id_
+      id = stageBuffer.last._1
     }
     while (!finished) {
       id += 1
       val stageName = UserInput.userInputWithPrompt(AppStrings.inputStageName)
       if (!stageName.equalsIgnoreCase("q")) {
         getSafeStageExtraction() match {
-          case Success(value) => stageBuffer.addOne(new Stage(id, stageName, value))
+          case Success(value) => stageBuffer.addOne(id, stageName, value)
           case Failure(exception) => getSafeStageExtraction()
         }
       } else {

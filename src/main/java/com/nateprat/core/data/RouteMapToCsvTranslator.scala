@@ -7,14 +7,12 @@ import com.nateprat.model.{Route, RouteMap}
 object RouteMapToCsvTranslator extends Translator[RouteMap, String] {
 
   override def translate(data: RouteMap): String = {
-    val string = new StringJoiner("\n")
-    data.foreachEntry((key, obj) => {
+    data.foldLeft(new StringJoiner("\n")){(acc, l) => {
       val route = new StringJoiner(",")
-      route.add(key)
-      obj.foreach(stage => route.add(StageToCsvTranslator.translate(stage)))
-      string.add(route.toString)
-    })
-    string.toString
+      route.add(l._1)
+      l._2.sorted.foreach(stage => route.add(StageListToCsvTranslator.translate(stage)))
+      acc.add(route.toString)
+    }}.toString
   }
 
 }

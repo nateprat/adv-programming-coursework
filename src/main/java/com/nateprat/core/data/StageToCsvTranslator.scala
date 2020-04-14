@@ -10,7 +10,7 @@ object StageToCsvTranslator extends Translator[Stage, String] {
     val sj = new StringJoiner(":")
     sj.add(String.valueOf(data.id_))
     sj.add(data.endPoint_)
-    sj.add(String.valueOf(data.distanceKm_))
+    sj.add(String.valueOf(data.distanceKm_) + "f")
     sj.toString
   }
 

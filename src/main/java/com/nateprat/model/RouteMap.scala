@@ -1,16 +1,14 @@
 package com.nateprat.model
 
-import com.nateprat.core.map.RouteMapToRouteList
+import com.nateprat.core.map.{RouteMapToRouteList, ToListTypeFromStageMapper}
 
 import scala.collection.mutable
 
-class RouteMap extends mutable.HashMap[String, List[Stage]] {
+class RouteMap extends mutable.HashMap[String, List[(Int, String, Float)]] {
 
   object Object {
     def create(routes:List[Route]): RouteMap = {
-      val routeMap = new RouteMap
-      routes.foreach(route => routeMap.addOne(route.name_, route.stages_))
-      routeMap
+      routes.foldLeft(new RouteMap){(acc, l) => acc.addOne(l.name_, ToListTypeFromStageMapper.map(l.stages_))}
     }
   }
 

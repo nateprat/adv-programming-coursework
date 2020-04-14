@@ -7,9 +7,7 @@ import scala.collection.mutable.ListBuffer
 object RouteMapToRouteList extends Mapper[RouteMap, List[Route]]{
 
   override def map(data: RouteMap): List[Route] = {
-    val routes = ListBuffer.empty[Route]
-    data.foreachEntry((key, obj) => routes.addOne(new Route(key, obj)))
-    routes.toList
+    data.foldLeft(ListBuffer.empty[Route]){(acc, l) => acc.addOne(new Route(l._1, ToListStageMapper.map(l._2)))}.toList
   }
 
 }

@@ -20,7 +20,7 @@ object DisplayRouteAction extends Action[Unit] {
       println(id + ")\t" + r.name_)
     })
     trySafeInput() match {
-      case Success(value) => println(rList(id-1).toString)
+      case Success(value) => println(rList(value - 1).toString)
       case Failure(exception) => trySafeInput()
     }
   }
