@@ -11,4 +11,6 @@ object AppStrings {
   val enterRouteId = "Enter Route id to display details"
   val saveDataPath = "Enter path for save file..."
   val thanksForUsingApp = "Thank you for using the Cycling Routes app"
+  val creatingRouteList = "Creating a new List of Routes"
+  val routeComment = "Enter route comment"
 }
