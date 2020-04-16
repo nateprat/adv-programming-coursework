@@ -28,10 +28,7 @@ class UserRouteList(name:String) {
 
   override def toString: String = {
     val sj = new StringJoiner(",", "List-" + name + ",", "")
-    rMap.foreachEntry((r, s) => {
-      val str = r + ":" + s
-      sj.add(str)
-    })
+    rMap.foreachEntry((r, s) => sj.add(r + ":" + s))
     sj.toString
   }
 }

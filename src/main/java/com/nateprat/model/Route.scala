@@ -11,6 +11,6 @@ class Route(name:String, stages:List[Stage] = List.empty[Stage]) {
   }
 
   override def toString: String = {
-    "Route: " + name + "\nStages: " + stages.toString()
+    "Route: " + name + "\nStages: " + stages.foldLeft(""){(acc, stage) => acc + "\n" + stage.toString}
   }
 }

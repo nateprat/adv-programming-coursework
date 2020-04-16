@@ -9,7 +9,7 @@ import com.nateprat.utils.{ListAndSelectRouteUtil, UserInput}
 import scala.util.{Failure, Success, Try}
 
 object DisplayRouteAction extends Action[Unit] {
-  override def identifier(): String = "R"
+  override def identifier(): String = "I"
 
   override def desc(): String = String.format(descString, "Display Route Information")
 

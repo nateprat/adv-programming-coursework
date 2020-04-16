@@ -3,7 +3,7 @@ package com.nateprat.system.user
 import java.io.File
 import java.util.StringJoiner
 
-import com.nateprat.core.action.{AverageTotalDistanceAndStagesAction, BlankAction, CreateRouteAction, CreateUserListAction, DisplayRouteAction, DisplayUserListAction, QuitAction, ReadFileAction, RouteDescAction, SaveFileAction}
+import com.nateprat.core.action.{AverageTotalDistanceAndStagesAction, BlankAction, CreateRouteAction, CreateUserListAction, DisplayRouteAction, DisplayUserListAction, QuitAction, ReadFileAction, ReportAction, RouteDescAction, SaveFileAction}
 import com.nateprat.core.data.FileReader
 import com.nateprat.core.extractor.RouteExtractor
 import com.nateprat.core.interactive.UserRouteList
@@ -20,7 +20,7 @@ object Menu {
   private var routeMap = new RouteMap
   var userLists = ListBuffer.empty[UserRouteList]
   private var stopping = false
-  private val actions = List(CreateRouteAction, RouteDescAction, AverageTotalDistanceAndStagesAction, DisplayRouteAction, CreateUserListAction, DisplayUserListAction, SaveFileAction, QuitAction)
+  private val actions = List(CreateRouteAction, RouteDescAction, AverageTotalDistanceAndStagesAction, ReportAction, DisplayRouteAction, CreateUserListAction, DisplayUserListAction, SaveFileAction, QuitAction)
 
  def mainMenu(): Unit = {
    println(AppStrings.welcome)
